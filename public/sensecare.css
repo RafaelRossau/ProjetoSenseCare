@@ -1,0 +1,17 @@
+body{
+    background-image: url("img/enfermagemFundo.png");
+    background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.abaprincipal{
+    background-color: white;
+}
+#principal-da-aba-principal{
+     display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100%;
+}
