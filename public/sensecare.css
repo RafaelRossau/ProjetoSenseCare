@@ -7,6 +7,8 @@ body{
 }
 .abaprincipal{
     background-color: white;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 #principal-da-aba-principal{
      display: flex;
@@ -14,4 +16,21 @@ body{
   align-items: center;
   min-height: 100vh;
   min-height: 100%;
+}
+.pacientes{
+  justify-content: space-between;
+}
+.alertas{
+  justify-content: space-between;
+}
+#botaoalertas{
+  border-radius: 10%;
+  color:white
+}
+#botaopacientes{
+  color: white;
+  border-radius: 10%;
+}
+.outro{
+  border-radius:10%
 }

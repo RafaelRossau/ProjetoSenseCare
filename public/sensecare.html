@@ -22,9 +22,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Pacientes</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Configurações
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -34,7 +34,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link" style="color: red" href="#">Deslogar</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -47,9 +47,35 @@
 <div id="principal-da-aba-principal">
    <fieldset id="abaprincipal" class="abaprincipal">
     <fieldset id="mensagemusuario">
-    <img src="img/nouser.webp" alt="" width="100" heigth="100">
-    <h3>Olá enfermeiro(a) "@user"!</h3>
+     <img src="img/nouser.webp" alt="" width="100" heigth="100">
+     <h3>Olá enfermeiro(a) "@user"!</h3>
+     <p>CIP: xxxxxx</p>
     </fieldset>
+     <fieldset>
+      <h4>Resumo</h4>
+      <div id="divisaoalertas">
+        <label for="botaoalertas">Alertas pendentes</label>
+        <button id="botaoalertas" style="background-color: green;">Ver alertas</button>
+      </div>
+      <div>
+        <label for="botaopacientes">Pacientes</label>
+        <button id="botaopacientes" style="background-color: green;">Ver pacientes</button>
+      </div>
+ 
+     <div class="container text-center">
+  <div class="row">
+    <div class="col outro" style="background-color: lightgreen;">
+      Agendar cuidados
+    </div>
+    <div class="col outro" style="background-color: lightgreen;">
+      Histórico de alertas
+    </div>
+    <div class="col outro" style="color: red; background-color: lightgrey;">
+      Deslogar
+    </div>
+  </div>
+</div>
+
    </fieldset>
 </div>
 </body>
