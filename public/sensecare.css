@@ -1,3 +1,4 @@
+
 body{
     background-image: url("img/enfermagemFundo.png");
     background-size: cover;
@@ -14,8 +15,9 @@ body{
      display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  min-height: 100%;
+  height: 80%;
+  width: 80%;
+
 }
 .pacientes{
   justify-content: space-between;
@@ -31,6 +33,18 @@ body{
   color: white;
   border-radius: 10%;
 }
-.outro{
+.outrofilho{
   border-radius:10%
+}
+.outrofilho1{
+  display:flex;
+  margin-left: 0%
+}
+.outrofilho2{
+  display:flex;
+  margin-left: 33.3%
+}
+.outrofilho3{
+  display:flex;
+  margin-left: 66.6%;
 }
