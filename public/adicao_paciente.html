@@ -5,48 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Paciente</title>
     <link rel="stylesheet" href="sensecare.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 </head>
 <body>
-<div id="formulario_pai">
+
+
+    <div id="formulario_pai">
  <fieldset id="formulario_main">
+    <label for="PK_CPF">CPF:</label>
+<input id="PK_CPF" type="text" maxlength="11">
+
+<label for="Nome">Nome:</label>
+<input id="Nome" type="text">
+
+<label for="Data_De_Nascimento">Data de Nascimento:</label>
+<input id="Data_De_Nascimento" type="date">
+
+<label for="Endereco">Endereço:</label>
+<input id="Endereco" type="text">
+
+<label for="Telefone">Telefone:</label>
+<input id="Telefone" type="text" maxlength="13">
+
+<label for="Telefone_Responsavel">Telefone do Responsável:</label>
+<input id="Telefone_Responsavel" type="text" maxlength="13">
+
+<label for="FK_Enfermeiro">ID do Enfermeiro Responsável:</label>
+<input id="FK_Enfermeiro" type="text" maxlength="4">
+
+<label for="FK_Leito">Leito:</label>
+<input id="FK_Leito" type="text" maxlength="3">
+
+<label for="Nome_Mae">Nome da Mãe:</label>
+<input id="Nome_Mae" type="text">
+
+<label for="Historico">Histórico:</label>
+<input id="Historico" type="text">
+
+<label for="Medicacoes">Medicações:</label>
+<input id="Medicacoes" type="text">
+
+<label for="Genero">Gênero:</label>
+<select id="Genero">
+    <option value="Feminino">Feminino</option>
+    <option value="Masculino">Masculino</option>
+    <option value="Outro">Outro</option>
+</select>
+
+<label for="Prioridade">Prioridade de Atendimento:</label>
+<select id="Prioridade">
+    <option value="Nenhuma">Nenhuma</option>
+    <option value="Gestante">Gestante</option>
+    <option value="Neurodivergencia">Neurodivergência</option>
+</select>
     
-    <label for="nome_adicao">Nome:</label>
-    <input id="nome_adicao" type="text">
-
-    <label for="data_adicao">Data de nascimento:</label>
-    <input id="data_adicao" type="date">
-
-    <label for="CPF_adicao">CPF:</label>
-    <input id="CPF_adicao" type="number">
-
-    <label for="endereco_adicao">Endereço:</label>
-    <input id="endereco_adicao" type="text">
-
-    <label for="telefone_adicao">Telefone:</label>
-    <input id="telefone_adicao" type="number">
-
-    <label for="nome_da_mae_adicao">Nome da mãe:</label>
-    <input id="nome_da_mae__adicao" type="text">
-
-    <label for="procedimento_adicao">Procedimento:</label>
-    <input id="procedimento_adicao" type="text">
-
-    <label for="enfermeiro_adicao">Enfermeiro:</label>
-    <input id="enfermeiro_adicao" type="text">
-
-    <label for="historico_adicao">Histórico:</label>
-    <input id="historico_adicao" type="text">
-
-    <label for="medicacoes_adicao">Medicações:</label>
-    <input id="medicacoes_adicao" type="text">
-
-    <p>Genêro:</p>
-    <input id="feminino_adicao" type="checkbox">Feminino
-    <input id="masculino_adicao" type="checkbox">Masculino
-    <input id="outro_adicao" type="checkbox">Outro
-    
-    <label for="prioridade_adicao">Prioridade de atendimento:</label>
-    <input id="prioridade_adicao" type="text">
 
     <button onclick="enviarFormularioPaciente()">Enviar</button>
  </fieldset>

@@ -2,16 +2,20 @@ let confirmacao = false
 let envio_cadastro = false
 
 function enviarFormularioPaciente(){
-   const nome_adicao = document.getElementById("nome_adicao").value;
-   const data_adicao = document.getElementById("data_adicao").value;
-   const CPF_adicao = document.getElementById("CPF_adicao").value;
-   const endereco_adicao = document.getElementById("endereco_adicao").value;
-   const telefone_adicao = document.getElementById("telefone_adicao").value;
-   const nome_da_mae_adicao = document.getElementById("nome_da_mae_adicao").value;
-   const procedimento_adicao = document.getElementById("procedimento_adicao").value;
-   const enfermeiro_adicao = document.getElementById("enfermeiro_adicao").value;
-   const historico_adicao = document.getElementById("historico_adicao").value;
-   const medicacoes_adicao = document.getElementById("medicacoes_adicao").value;
+    let nome_adicao = document.getElementById("Nome").value.trim();
+    let data_adicao = document.getElementById("Data_De_Nascimento").value.trim();
+    let CPF_adicao = document.getElementById("PK_CPF").value.trim();
+    let endereco_adicao = document.getElementById("Endereco").value.trim();
+    let telefone_adicao = document.getElementById("Telefone").value.trim();
+    let nome_da_mae_adicao = document.getElementById("Nome_Mae").value.trim();
+    // O campo "procedimento_adicao" não está na sua lista SQL, foi removido.
+    let enfermeiro_adicao = document.getElementById("FK_Enfermeiro").value.trim();
+    let historico_adicao = document.getElementById("Historico").value.trim();
+    let medicacoes_adicao = document.getElementById("Medicacoes").value.trim();
+    let telefone_responsavel_adicao = document.getElementById("Telefone_Responsavel").value.trim();
+    let leito_adicao = document.getElementById("FK_Leito").value.trim();
+    let genero_adicao = document.getElementById("Genero").value;
+    let prioridade_adicao = document.getElementById("Prioridade").value;
    
 
    if(nome_adicao === ""){
@@ -28,7 +32,7 @@ function enviarFormularioPaciente(){
    else{
     data_adicao = true
    }
-   if(CPF_adicao.length != 11){
+   if(CPF_adicao.length !== 11){
     alert("O CPF inserido não possui 11 digitos.")
     CPF_adicao = false
    }
@@ -55,12 +59,6 @@ function enviarFormularioPaciente(){
    else{
     nome_da_mae_adicao = true
    }
-   if(procedimento_adicao === ""){
-    procedimento_adicao = false
-   }
-   else{
-    procedimento_adicao = true
-   }
    if(enfermeiro_adicao === ""){
     alert("Escolha um enfermeiro responsável pelo paciente")
     enfermeiro_adicao = false
@@ -80,11 +78,35 @@ function enviarFormularioPaciente(){
    else{
     medicacoes_adicao = true
    }
-
-   if((nome_adicao = true) && (data_adicao = true) && (CPF_adicao = true) && (telefone_adicao = true) && (enfermeiro_adicao = true)){
-    confirmacao = true
+   if(telefone_responsavel_adicao.length !== 13){
+    telefone_responsavel_adicao = false
    }
-   if((confirmacao = true) && (nome_da_mae_adicao = false) || (procedimento_adicao = false) || (historico_adicao = false) || (medicacoes_adicao = false)){
+   else{
+    telefone_responsavel_adicao = true
+   }
+   if(leito_adicao === ""){
+    leito_adicao = false
+   }
+   else{
+    leito_adicao = true
+   }
+   if(genero_adicao === ""){
+    genero_adicao = false
+   }
+   else{
+    genero_adicao = true
+   }
+   if(prioridade_adicao === ""){
+    prioridade_adicao = false
+   }
+   else{
+    prioridade_adicao = true
+   }
+
+   if((nome_adicao === true) && (data_adicao === true) && (CPF_adicao === true) && (telefone_adicao === true) && (enfermeiro_adicao === true) && (leito_adicao === true) && (genero_adicao === true)){
+    confirmacao = true
+   
+   if((confirmacao === true) && (nome_da_mae_adicao === false) || (procedimento_adicao === false) || (historico_adicao === false) || (medicacoes_adicao === false)){
     if (confirm("Há opção(ões) opcional(is) em branco ainda, deseja enviar o formulario mesmo assim?")){
         alert("Cadastro enviado com sucesso!")
         envio_cadastro = true
@@ -93,8 +115,20 @@ function enviarFormularioPaciente(){
         return;
     }
    }
-   if((nome_adicao = true) && (data_adicao = true) && (CPF_adicao = true) && (telefone_adicao = true) && (enfermeiro_adicao = true) && (nome_da_mae_adicao = true) && (procedimento_adicao = true) && (historico_adicao = true) && (medicacoes_adicao = true)){
+}
+   else if((nome_adicao === true) && (data_adicao === true) && (CPF_adicao === true) && (telefone_adicao === true) && (enfermeiro_adicao === true) && (nome_da_mae_adicao === true) && (procedimento_adicao === true) && (historico_adicao === true) && (medicacoes_adicao === true)){
     alert("Cadastro enviado com sucesso!")
     envio_cadastro = true
    }
+   else{
+    return;
+   }
+   if(envio_cadastro === true){
+    fetch("/Pacientes", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({nome_adicao, data_adicao, CPF_adicao, endereco_adicao, telefone_adicao, nome_da_mae_adicao, enfermeiro_adicao, historico_adicao, medicacoes_adicao, telefone_responsavel_adicao,leito_adicao, genero_adicao, prioridade_adicao }), // manda o objeto js para o banco como json
+  });
+   }
+
 }
