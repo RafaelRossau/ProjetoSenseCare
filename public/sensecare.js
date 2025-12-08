@@ -16,119 +16,145 @@ function enviarFormularioPaciente(){
     let leito_adicao = document.getElementById("FK_Leito").value.trim();
     let genero_adicao = document.getElementById("Genero").value;
     let prioridade_adicao = document.getElementById("Prioridade").value;
+
+    let nome_adicao_VERIFICACAO = false
+    let data_adicao_VERIFICACAO = false
+    let CPF_adicao_VERIFICACAO = false
+    let endereco_adicao_VERIFICACAO = false
+    let telefone_adicao_VERIFICACAO = false
+    let nome_da_mae_adicao_VERIFICACAO = false
+    let enfermeiro_adicao_VERIFICACAO = false
+    let historico_adicao_VERIFICACAO = false
+    let medicacoes_adicao_VERIFICACAO= false
+    let telefone_responsavel_adicao_VERIFICACAO = false
+    let leito_adicao_VERIFICACAO = false
+    let genero_adicao_VERIFICACAO = false
+    let prioridade_adicao_VERIFICACAO = false
    
 
    if(nome_adicao === ""){
     alert("O nome não pode ficar vázio.")
-    nome_adicao = false
+    nome_adicao_VERIFICACAO = false
    }
    else{
-    nome_adicao = true
+    nome_adicao_VERIFICACAO = true
    }
    if(data_adicao === ""){
     alert("A data não pode ficar vázia.")
-    data_adicao = false
+    data_adicao_VERIFICACAO = false
    }
    else{
-    data_adicao = true
+    data_adicao_VERIFICACAO = true
    }
    if(CPF_adicao.length !== 11){
     alert("O CPF inserido não possui 11 digitos.")
-    CPF_adicao = false
+    CPF_adicao_VERIFICACAO = false
    }
    else{
-    CPF_adicao = true
+    CPF_adicao_VERIFICACAO = true
    }
    if(endereco_adicao === ""){
     alert("O endereço não pode ficar vázio")
-    endereco_adicao = false
+    endereco_adicao_VERIFICACAO = false
    }
    else{
-    endereco_adicao = true
+    endereco_adicao_VERIFICACAO = true
    }
    if(telefone_adicao.length != 13){
     alert("O telefone tem de ter 13 digitos.")
-    telefone_adicao = false
+    telefone_adicao_VERIFICACAO = false
    }
    else{
-    telefone_adicao = true
+    telefone_adicao_VERIFICACAO = true
    }
    if(nome_da_mae_adicao === ""){
-    nome_da_mae_adicao = false
+    nome_da_mae_adicao_VERIFICACAO = false
    }
    else{
-    nome_da_mae_adicao = true
+    nome_da_mae_adicao_VERIFICACAO = true
    }
    if(enfermeiro_adicao === ""){
     alert("Escolha um enfermeiro responsável pelo paciente")
-    enfermeiro_adicao = false
+    enfermeiro_adicao_VERIFICACAO = false
    }
    else{
-    enfermeiro_adicao = true
+    enfermeiro_adicao_VERIFICACAO = true
    }
    if(historico_adicao === ""){
-    historico_adicao = false
+    historico_adicao_VERIFICACAO = false
    }
    else{
-    historico_adicao = true
+    historico_adicao_VERIFICACAO = true
    }
    if(medicacoes_adicao === ""){
-    medicacoes_adicao = false
+    medicacoes_adicao_VERIFICACAO = false
    }
    else{
-    medicacoes_adicao = true
+    medicacoes_adicao_VERIFICACAO = true
    }
    if(telefone_responsavel_adicao.length !== 13){
-    telefone_responsavel_adicao = false
+    telefone_responsavel_adicao_VERIFICACAO = false
    }
    else{
-    telefone_responsavel_adicao = true
+    telefone_responsavel_adicao_VERIFICACAO = true
    }
    if(leito_adicao === ""){
-    leito_adicao = false
+    leito_adicao_VERIFICACAO = false
    }
    else{
-    leito_adicao = true
+    leito_adicao_VERIFICACAO = true
    }
    if(genero_adicao === ""){
-    genero_adicao = false
+    genero_adicao_VERIFICACAO = false
    }
    else{
-    genero_adicao = true
+    genero_adicao_VERIFICACAO = true
    }
    if(prioridade_adicao === ""){
-    prioridade_adicao = false
+    prioridade_adicao_VERIFICACAO = false
    }
    else{
-    prioridade_adicao = true
+    prioridade_adicao_VERIFICACAO = true
    }
 
-   if((nome_adicao === true) && (data_adicao === true) && (CPF_adicao === true) && (telefone_adicao === true) && (enfermeiro_adicao === true) && (leito_adicao === true) && (genero_adicao === true)){
-    confirmacao = true
+   if((nome_adicao_VERIFICACAO === true) && (data_adicao_VERIFICACAO === true) && (CPF_adicao_VERIFICACAO === true) && (endereco_adicao_VERIFICACAO === true) && (telefone_adicao_VERIFICACAO === true) && (enfermeiro_adicao_VERIFICACAO === true) && (leito_adicao_VERIFICACAO === true) && (genero_adicao_VERIFICACAO === true) && (prioridade_adicao_VERIFICACAO === true)){
    
-   if((confirmacao === true) && (nome_da_mae_adicao === false) || (procedimento_adicao === false) || (historico_adicao === false) || (medicacoes_adicao === false)){
-    if (confirm("Há opção(ões) opcional(is) em branco ainda, deseja enviar o formulario mesmo assim?")){
-        alert("Cadastro enviado com sucesso!")
-        envio_cadastro = true
+    if (nome_da_mae_adicao_VERIFICACAO === false || historico_adicao_VERIFICACAO === false || medicacoes_adicao_VERIFICACAO === false || telefone_responsavel_adicao_VERIFICACAO === false) {
+        if (confirm("Há opção(ões) opcional(is) em branco ainda, deseja enviar o formulário mesmo assim?")) {
+            alert("Cadastro enviado com sucesso!");
+            envio_cadastro = true;
+        } else {
+            return; // Usuário cancelou
+        }
+    } else {
+        alert("Cadastro enviado com sucesso!");
+        envio_cadastro = true;
     }
-    else{
-        return;
-    }
-   }
-}
-   else if((nome_adicao === true) && (data_adicao === true) && (CPF_adicao === true) && (telefone_adicao === true) && (enfermeiro_adicao === true) && (nome_da_mae_adicao === true) && (procedimento_adicao === true) && (historico_adicao === true) && (medicacoes_adicao === true)){
-    alert("Cadastro enviado com sucesso!")
-    envio_cadastro = true
    }
    else{
+    // Se não passou na validação dos campos OBRIGATÓRIOS
     return;
    }
+
    if(envio_cadastro === true){
     fetch("/Pacientes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({nome_adicao, data_adicao, CPF_adicao, endereco_adicao, telefone_adicao, nome_da_mae_adicao, enfermeiro_adicao, historico_adicao, medicacoes_adicao, telefone_responsavel_adicao,leito_adicao, genero_adicao, prioridade_adicao }), // manda o objeto js para o banco como json
+    body: JSON.stringify({
+        CPF_adicao, 
+      nome_adicao, 
+      data_adicao, 
+      endereco_adicao, 
+      telefone_adicao, 
+      telefone_responsavel_adicao,
+      enfermeiro_adicao, 
+      historico_adicao, 
+      leito_adicao,
+      nome_da_mae_adicao, 
+      genero_adicao, 
+      prioridade_adicao, 
+      medicacoes_adicao
+    }), 
   });
    }
-
 }

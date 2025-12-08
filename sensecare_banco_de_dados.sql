@@ -19,6 +19,9 @@ Prioridade VARCHAR(50) NOT NULL CHECK (Prioridade IN ("Nenhuma", "Gestante", "Ne
 Medicacoes VARCHAR(100) NOT NULL
 );
 
+SHOW COLUMNS FROM Pacientes;
+
+
 CREATE TABLE Enfermeiros(
 PK_ID CHAR(4) NOT NULL PRIMARY KEY,
 UNIQUE_SmartWatch_ID CHAR(3) NOT NULL UNIQUE,
